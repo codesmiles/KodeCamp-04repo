@@ -1,7 +1,7 @@
 # get the os of the pc
 # implement a function that will create a file and there will be restrictions on where the files can be created
 import os
-from functions import create_group, create_user, assign_user_to_group
+from functions import create_group, create_user, assign_user_to_group, creating_file_company_directory
 
 """_summary_
     1. Using Python, create the following users, and assign them to groups
@@ -16,7 +16,6 @@ from functions import create_group, create_user, assign_user_to_group
     Gozie, IT intern                    IT_TEAM
     Ogochukwu, Finance Manager          FINANCE_TEAM
 """
-
 
 def processing_kodecamp_employees():
     employees_data = {
@@ -49,63 +48,33 @@ def processing_kodecamp_employees():
         # print(f"user data: {user_data} belongs to group named: {group_name}, ")
 
 
-def creating_file_company_directory(
-    name_of_file: str, directory_to_create_the_file: str
-):
-    root = "company_files" 
-    company_dir = [
-        "Finance Budgets",
-        "Contract Documents",
-        "Business Projections",
-        "Business Models",
-        "Employee Data",
-        "Company Vision And Mission Statements",
-        "Server Configuration Scripts",
-    ]
-    
-    if len(directory_to_create_the_file) < 1:
-        print(
-            "The directory should not be empty."
-        )
-        return False
-    
-    if str.title(directory_to_create_the_file) not in company_dir:
-        print(
-            f"The directory {directory_to_create_the_file} does not exist"
-        )
-        return False
-    
-    if not os.path.exists(root):
-        os.mkdir(f'{root}')
-        print(f"directory created in {os.getcwd()}")
-        
-    os.chdir(f'{root}')
-    print(f"directory changed to {os.getcwd()}")
-    
-    if not os.path.exists(directory_to_create_the_file):
-        os.mkdir(directory_to_create_the_file)
-        print(f"directory created in {os.getcwd()}")
-    
-    os.chdir(directory_to_create_the_file)
-    print(f"directory changed to {os.getcwd()}")
+    """_summary_
+        2. Using Python, create the following directories
+        Company Documents (Directories):
 
-    if os.path.exists(name_of_file):
-        print(
-            f"The file {name_of_file} already exists."
-        )
-        return False
-    
-    with open(f'{name_of_file}.txt', "w") as file:
-        file.write("Hello, World! \n\n delete this text when you see this")
+        Finance Budgets
+        Contract Documents
+        Business Projections
+        Business Models
+        Employee Data
+        Company Vision and Mission Statement
+        Server Configuration Script
 
-file_name = input("Input The name of your file: ")
-directory = input("Input the directory you want to create your file: ")
+        Include a feature that takes user input and creates a file in your code. User input should include:
+        Name of file
+        Directory to create the file
+        Don't create the file if the Directory name is not one of the company directories.
+    """
+def task_number_2():    
+    file_name = input("Input The name of your file: ")
+    directory = input("Input the directory you want to create your file: ")
 
-creating_file_company_directory(file_name, directory)
+    creating_file_company_directory(file_name, directory)
 
 
 def main():
-    processing_kodecamp_employees()
+    # processing_kodecamp_employees()
+    task_number_2()
 
 
-# main()
+main()

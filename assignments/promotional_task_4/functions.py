@@ -57,8 +57,54 @@ def assign_user_to_group(username: str, group_name: str):
         return False
 
 
+# user create file and directories
+def creating_file_company_directory(
+    name_of_file: str, directory_to_create_the_file: str
+):
+    root = "company_files" 
+    company_dir = [
+        "Finance Budgets",
+        "Contract Documents",
+        "Business Projections",
+        "Business Models",
+        "Employee Data",
+        "Company Vision And Mission Statements",
+        "Server Configuration Scripts",
+    ]
+    
+    if len(directory_to_create_the_file) < 1:
+        print(
+            "The directory should not be empty."
+        )
+        return False
+    
+    if str.title(directory_to_create_the_file) not in company_dir:
+        print(
+            f"The directory {directory_to_create_the_file} does not exist"
+        )
+        return False
+    
+    if not os.path.exists(root):
+        os.mkdir(f'{root}')
+        print(f"directory created in {os.getcwd()}")
+        
+    os.chdir(f'{root}')
+    print(f"directory changed to {os.getcwd()}")
+    
+    if not os.path.exists(directory_to_create_the_file):
+        os.mkdir(directory_to_create_the_file)
+        print(f"directory created in {os.getcwd()}")
+    
+    os.chdir(directory_to_create_the_file)
+    print(f"directory changed to {os.getcwd()}")
 
-# # Example usage
-# create_group('devs')
-# create_user('alice', 'password123')
-# assign_user_to_group('alice', 'devs')
+    if os.path.exists(name_of_file):
+        print(
+            f"The file {name_of_file} already exists."
+        )
+        return False
+    
+
+    with open(f'{name_of_file}.txt', "w") as file:
+        file.write("Hello, World! \n\n delete this text when you see this")
+    return True
