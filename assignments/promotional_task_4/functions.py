@@ -4,39 +4,29 @@ import platform
 import subprocess
 
 
-# create groups
+## create groups
 def create_group(group_name: str):
     os_type = platform.system()
     try:
-        if os_type == "Darwin":
-            # macOS command to create a group
-            subprocess.run(["sudo", "dscl", ".", "-create", f"/Groups/{group_name}"], check=True)
-            print(f"Group '{group_name}' created successfully on macOS.")
-        else:
-            print(f"Unsupported OS: {os_type}")
-            return False
-        
+        # Linux command to create a group
+        subprocess.run(["sudo", "groupadd",group_name], check=True)
+        print(f"Group '{group_name}' created successfully.")
         return group_name
+
     except subprocess.CalledProcessError as e:
         print(f"create_group Error: {e}")
         return False
 
 
 # create user
-def create_user(username: str, password: str):
+def create_user(username: str, password: str=""):
     os_type = platform.system()
     try:
-        if os_type == "Darwin":
-            # macOS command to create a user using sysadminctl
-            subprocess.run(["sudo", "sysadminctl", "-addUser", username, "-password", password], check=True)
-            print(f"User '{username}' created successfully on macOS.")
-        else:
-            print(f"Unsupported OS: {os_type}")
-            return False
-        return {
-            "username": username,
-            "pwd": password,
-        }
+        # Linux command to create a user
+        subprocess.run(["sudo", "useradd", username], check=True)
+        subprocess.run(["sudo", "passwd", username])
+        return username
+
     except subprocess.CalledProcessError as e:
         print(f"Error creating user '{username}': {e}")
         return False
@@ -45,13 +35,8 @@ def create_user(username: str, password: str):
 # assign user to groups
 def assign_user_to_group(username: str, group_name: str):
     try:
-        if platform.system() == "Windows":
-            subprocess.run(
-                ["net", "localgroup", group_name, username, "/add"], check=True
-            )
-
-        subprocess.run(["sudo", "adduser", username, group_name], check=True)
-       
+        subprocess.run(["sudo", "usermod", "-aG", group_name, username])
+        return True
     except subprocess.CalledProcessError as e:
         print(f"Error assigning user '{username}' to group '{group_name}': {e}")
         return False
