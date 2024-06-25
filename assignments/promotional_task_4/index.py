@@ -76,7 +76,7 @@ def task_number_2():
 
 
 def main():
-    processing_kodecamp_employees()
     task_number_2()
+    processing_kodecamp_employees()
 
 main()
