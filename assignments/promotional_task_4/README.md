@@ -61,6 +61,9 @@ Don't create the file if the Directory name is not one of the company directorie
 
 ## Solution
 
+[**CLICK HERE TO SEE THE FUNCTIONS**](functions.py)
+[**CLICK HERE TO SEE WHERE THE FUNCTIONS ARE BEING IMPORTED AND EXECUTED**](index.py)
+
 - First task
   - set up vagrant virtual machine
     ![vagrant int](assets/vagrant_init.png)
