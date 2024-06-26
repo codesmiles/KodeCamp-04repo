@@ -8,6 +8,8 @@
   - [Precaution](#precaution)
   - [Promotional task 4 Instructions](#promotional-task-4-instructions)
   - [Solution](#solution)
+    - [**CLICK HERE TO SEE THE FUNCTIONS**](#click-here-to-see-the-functions)
+    - [**CLICK HERE TO SEE WHERE THE FUNCTIONS ARE BEING IMPORTED AND EXECUTED**](#click-here-to-see-where-the-functions-are-being-imported-and-executed)
   - [Conclusion](#conclusion)
 
 
@@ -61,8 +63,9 @@ Don't create the file if the Directory name is not one of the company directorie
 
 ## Solution
 
-[**CLICK HERE TO SEE THE FUNCTIONS**](functions.py)
-[**CLICK HERE TO SEE WHERE THE FUNCTIONS ARE BEING IMPORTED AND EXECUTED**](index.py)
+### [**CLICK HERE TO SEE THE FUNCTIONS**](functions.py)
+
+### [**CLICK HERE TO SEE WHERE THE FUNCTIONS ARE BEING IMPORTED AND EXECUTED**](index.py)
 
 - First task
   - set up vagrant virtual machine
